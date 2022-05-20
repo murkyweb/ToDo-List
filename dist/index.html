@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Todo List</title>
+    </head>
+    <body>
+        <header>
+            <h1>ToDo List</h1>
+        </header>
+        <main>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item home">Home</li>
+                    <li class="nav-item today">Today</li>
+                    <li class="nav-item week">This Week</li>
+                </ul>
+                <li class="projects">
+                    <span>Projects</span>
+                    <ul class="project-list">
+                        <li class="project-item">Test</li>
+                    </ul>
+                </li>
+            </nav>
+            <div class="content"></div>
+        </main>
+        <div class="modal">
+            <form action="#" class="project-form">
+                <input type="text" placeholder="Title" required name="title" id="title">
+                <button type="button" class="submit-project">Submit</button>
+            </form>
+        </div>
+        
+        <script src="main.js"></script>
+    </body>
+</html>
