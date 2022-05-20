@@ -3,6 +3,10 @@ class Task {
         this.name = name;
         this.dueDate = dueDate;
     }
+
+    sayMyName() {
+        console.log(this.name);
+    }
 };
 
 export { Task };

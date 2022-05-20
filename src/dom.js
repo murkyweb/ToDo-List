@@ -14,14 +14,19 @@ const DOM = (function() {
         else if ('tasks' in data) {
             //test if sending an object i.e a project that has a tasks attribute.
             const dom = clearDOM('.content');
+    
             const addTaskBtn = createButton('Add', 'Task');
             const removeProjectBtn = createButton('Remove', 'Project');
     
-            dom.innerHTML = `<h2>${data.name}</h2>`;
+            dom.innerHTML = `<h2>${data.name}</h2><ul class='task-list'></ul>`;
+            const ul = document.querySelector('.task-list');
+            console.log(ul);
 
             data.tasks.forEach((item, index) => {
                 const element = createNewItem(item, 'Task', index);
-                dom.appendChild(element);
+                const removeTaskBtn = createButton('Remove', 'Task');
+                element.appendChild(removeTaskBtn);
+                ul.appendChild(element);
             });
             dom.appendChild(addTaskBtn);
             dom.appendChild(removeProjectBtn);
@@ -34,14 +39,14 @@ const DOM = (function() {
         return dom;
     };
 
-    const openModal= () => {
+    const openModal = (type) => {
         emptyInput();
-        const modal = document.querySelector('.modal');
+        const modal = document.querySelector(`.${type}-modal`);
         modal.style.display = 'block';
     };
 
-    const closeModal = () => {
-        const modal = document.querySelector('.modal');
+    const closeModal = (type) => {
+        const modal = document.querySelector(`.${type}-modal`);
         modal.style.display = 'none';
     };
 

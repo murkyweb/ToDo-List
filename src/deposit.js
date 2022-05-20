@@ -1,4 +1,5 @@
 import { Project } from "./project";
+import { Task } from "./task";
 
 const deposit = (function() {
     const populateStorage = (data) => {
@@ -7,7 +8,10 @@ const deposit = (function() {
     
     const getStorage = () => {
         const data = JSON.parse(localStorage.getItem('Projects'));
-        const projects = data.map((project) => Object.assign(new Project(), project));
+        const projects = data.map((item) => Object.assign(new Project(), item));
+        for (let i = 0; i < projects.length; i++) {
+            projects[i].tasks = projects[i].tasks.map((task) => Object.assign(new Task(), task));
+        }
         return projects;
     };
 
