@@ -1,3 +1,4 @@
+import { deposit } from "./deposit";
 import { DOM } from "./dom";
 import { Project } from "./project";
 
@@ -7,9 +8,19 @@ const App = (function() {
     const addProject = (value) => {
         const project = new Project(value);
         projectList.push(project);
-
+        deposit.populateStorage(projectList);
         DOM.updateDOM(projectList);
     };
+
+    const init = () => {
+        if (!localStorage.getItem('Projects')) {
+            deposit.populateStorage(projectList);
+        } else {
+            projectList = deposit.getStorage();
+        }
+        DOM.updateDOM(projectList);
+    };
+
 
     const handleEvents = () => {
         window.addEventListener('click', (e) => {
@@ -37,7 +48,7 @@ const App = (function() {
         });
     };
 
-    return { addProject, handleEvents };
+    return { addProject, handleEvents, init };
 })();
 
 export { App };
