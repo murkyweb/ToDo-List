@@ -57,7 +57,12 @@ const DOM = (function() {
 
     const createButton = (type, category) => {
         const button = document.createElement('button');
-        button.innerText = `${type} ${category}`;
+        if (category === 'Project') {
+            button.innerText = `${type} ${category}`;
+        }
+        else {
+            button.innerText = ``;
+        }
         button.classList.add(`${type.toLowerCase()}-${category.toLowerCase()}`);
 
         return button;
@@ -66,7 +71,7 @@ const DOM = (function() {
     const createNewItem = (item, category, index) => {
         const element = document.createElement('li');
         element.classList.add(`${category.toLowerCase()}-item`);
-        element.innerHTML = (category === 'Task') ? `${item.name} ${item.dueDate}` : `${item.name}`;
+        element.innerHTML = (category === 'Task') ? `<span class='name'>${item.name}</span> <span class='date'>${item.dueDate}</span>` : `${item.name}`;
         element.dataset.key = index;
 
         return element;
