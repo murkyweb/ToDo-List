@@ -42,6 +42,7 @@ nav {
 
 main {
     display: flex;
+    flex-direction: column;
     flex: 1;
 }
 
@@ -69,8 +70,12 @@ ol, ul {
     padding: 20px 5px;
 }
 
-.project-list {
+.projects:hover .project-list {
     display: flex;
+}
+
+.project-list {
+    display: none;
     flex-direction: column;
 }
 
@@ -266,5 +271,4 @@ input:invalid {
     cursor: pointer;
     background-color: var(--main-color-lighter);
 }
-
 
